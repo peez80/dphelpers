@@ -1,0 +1,176 @@
+
+package de.stiffi.media.telestreamvantage.api.generated;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for anonymous complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="workflowIdentifier" type="{http://schemas.microsoft.com/2003/10/Serialization/}guid" minOccurs="0"/>
+ *         &lt;element name="sourceFilename" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="context" type="{http://Telestream.Vantage.Sdk/2010/07}Context" minOccurs="0"/>
+ *         &lt;element name="requiredItems" type="{http://Telestream.Vantage.Sdk/2010/07}ArrayOfItem" minOccurs="0"/>
+ *         &lt;element name="jobName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "workflowIdentifier",
+    "sourceFilename",
+    "context",
+    "requiredItems",
+    "jobName"
+})
+@XmlRootElement(name = "SubmitFileAndItems")
+public class SubmitFileAndItems {
+
+    protected String workflowIdentifier;
+    @XmlElementRef(name = "sourceFilename", namespace = "http://Telestream.Vantage.Sdk/2010/07", type = JAXBElement.class)
+    protected JAXBElement<String> sourceFilename;
+    @XmlElementRef(name = "context", namespace = "http://Telestream.Vantage.Sdk/2010/07", type = JAXBElement.class)
+    protected JAXBElement<Context> context;
+    @XmlElementRef(name = "requiredItems", namespace = "http://Telestream.Vantage.Sdk/2010/07", type = JAXBElement.class)
+    protected JAXBElement<ArrayOfItem> requiredItems;
+    @XmlElementRef(name = "jobName", namespace = "http://Telestream.Vantage.Sdk/2010/07", type = JAXBElement.class)
+    protected JAXBElement<String> jobName;
+
+    /**
+     * Gets the value of the workflowIdentifier property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWorkflowIdentifier() {
+        return workflowIdentifier;
+    }
+
+    /**
+     * Sets the value of the workflowIdentifier property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWorkflowIdentifier(String value) {
+        this.workflowIdentifier = value;
+    }
+
+    /**
+     * Gets the value of the sourceFilename property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getSourceFilename() {
+        return sourceFilename;
+    }
+
+    /**
+     * Sets the value of the sourceFilename property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setSourceFilename(JAXBElement<String> value) {
+        this.sourceFilename = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the context property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Context }{@code >}
+     *     
+     */
+    public JAXBElement<Context> getContext() {
+        return context;
+    }
+
+    /**
+     * Sets the value of the context property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Context }{@code >}
+     *     
+     */
+    public void setContext(JAXBElement<Context> value) {
+        this.context = ((JAXBElement<Context> ) value);
+    }
+
+    /**
+     * Gets the value of the requiredItems property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link ArrayOfItem }{@code >}
+     *     
+     */
+    public JAXBElement<ArrayOfItem> getRequiredItems() {
+        return requiredItems;
+    }
+
+    /**
+     * Sets the value of the requiredItems property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link ArrayOfItem }{@code >}
+     *     
+     */
+    public void setRequiredItems(JAXBElement<ArrayOfItem> value) {
+        this.requiredItems = ((JAXBElement<ArrayOfItem> ) value);
+    }
+
+    /**
+     * Gets the value of the jobName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getJobName() {
+        return jobName;
+    }
+
+    /**
+     * Sets the value of the jobName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setJobName(JAXBElement<String> value) {
+        this.jobName = ((JAXBElement<String> ) value);
+    }
+
+}

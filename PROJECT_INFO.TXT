@@ -1,0 +1,3 @@
+In dieses Projekt kommen nur Helper-Klassen, die von keinen anderen als der JRE System Library abhängen.
+
+Die einzige Abhängigkeit, die erlaubt ist ist slf4j.

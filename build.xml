@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="dphelpers" basedir="../DPHelpers" default="dphelpers.makeJar">
+	<property environment="env" />
+	<property name="dphelpers.basedir" value="../DPHelpers" />
+	<property name="dphelpers.build.dir" value="${dphelpers.basedir}/build" />
+	<property name="dphelpers.build.classes.dir" value="${dphelpers.build.dir}/classes" />
+	<property name="dphelpers.build.jar.dir" value="${dphelpers.build.dir}/jar" />
+	<property name="dphelpers.build.jar.filename" value="DPHelpers.jar" />
+	<property name="dphelpers.build.javadoc.dir" value="${dphelpers.build.dir}/javadoc" />
+	<property name="dphelpers.build.javadoc.archive.name" value="DPHelpers-javadoc" />
+	<property name="dphelpers.src.dir" value="${dphelpers.basedir}/src" />
+
+	<property name="common_libraries.basedir" value="../Common_Libraries" />
+
+	<path id="dphelpers.classpath">
+		<fileset dir="${dphelpers.build.jar.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="dphelpers.clean">
+		<delete dir="${dphelpers.build.dir}" />		
+	</target>
+
+
+	<target name="dphelpers.copyLibs">
+		<mkdir dir="${dphelpers.build.jar.dir}" />
+		<copy todir="${dphelpers.build.jar.dir}">
+			<fileset file="${common_libraries.basedir}/commons-codec-1.4/commons-codec-1.4.jar" />
+			<fileset file="${common_libraries.basedir}/commons-net-3.2/commons-net3.2.jar" />
+			<fileset file="${common_libraries.basedir}/slf4j-1.6.1/slf4j-api-1.6.1.jar" />
+		</copy>
+	</target>
+
+	<target name="dphelpers.compile" depends="dphelpers.clean, dphelpers.copyLibs">
+		<mkdir dir="${dphelpers.build.classes.dir}" />
+		<javac srcdir="${dphelpers.src.dir}" destdir="${dphelpers.build.classes.dir}" debug="true">
+			<classpath>
+				<path refid="dphelpers.classpath" />
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- <target name="dphelpers.makeJar" depends="dphelpers.compile,dphelpers.javadoc"> -->
+	<target name="dphelpers.makeJar" depends="dphelpers.compile">
+		<mkdir dir="${dphelpers.build.jar.dir}" />
+		<jar destfile="${dphelpers.build.jar.dir}/${dphelpers.build.jar.filename}">
+			<fileset dir="${dphelpers.build.classes.dir}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+	</target>
+	
+	
+	<target name="dphelpers.javadoc">
+		<delete dir="${dphelpers.build.javadoc.dir}" />
+		
+		<javadoc sourcepath="${dphelpers.src.dir}" 
+		destdir="${dphelpers.build.javadoc.dir}" />
+		
+		<zip destfile="${dphelpers.build.jar.dir}/${dphelpers.build.javadoc.archive.name}.zip">
+			<fileset dir="${dphelpers.build.javadoc.dir}">
+				<include name="**/*" />				
+			</fileset>
+		</zip>
+	</target>
+
+
+	<target name="dphelpers.generateVantageClient">
+		<delete dir="${dphelpers.src.dir}/de/stiffi/media/telestreamvantage/api/generated" />
+		<!-- Muss nur bei Bedarf aufgerufen werden. Die Client-Klassen sind im SVN,
+		weil die wsdl mal wieder eine mehrgeteilte ist u. sich nicht als einzelnes Dokument speichern lässt
+		-->
+		<exec command="${env.JAVA_HOME}/bin/wsimport.exe">
+			<arg value="-keep" />
+			<arg value="-Xnocompile" />
+			<arg value="-d" />
+			<arg value="${dphelpers.src.dir}" />
+			<arg value="-p" />
+			<arg value="de.stiffi.media.telestreamvantage.api.generated" />
+			<arg value="http://p-telestream01:8676/?wsdl" />
+		</exec>
+	</target>
+
+</project>
