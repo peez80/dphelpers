@@ -21,6 +21,10 @@ public class StopWatch {
         processed.incrementAndGet();
     }
 
+    public long getTotalCount() {
+        return totalCount;
+    }
+
     public void increment(long amount) {
         processed.addAndGet(amount);
     }
