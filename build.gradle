@@ -1,5 +1,5 @@
 /*
-Um DPHelpers irgendwo in Gradle zu integrieren ist folgendes nötig:
+Um DPHelpers irgendwo in Gradle zu integrieren ist folgendes nï¿½tig:
 
 repositories {
 	maven {
@@ -27,7 +27,7 @@ sourceSets {
 	}
 }
 
-version = "1.6"
+version = "1.7"
 group = "de.stiffi.dphelpers"
 archivesBaseName = "DPHelpers"
 sourceCompatibility = JavaVersion.VERSION_1_7
