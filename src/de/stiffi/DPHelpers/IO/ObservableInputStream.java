@@ -48,6 +48,19 @@ public class ObservableInputStream extends FilterInputStream {
         return result;
     }
 
+    @Override
+    public int read(byte[] b, int off, int len) throws IOException {
+        int result =  super.read(b, off, len);
+
+        if(result != -1) {
+            processedBytes.addAndGet(result);
+            informListener(false);
+        }else{
+            informListener(true);
+        }
+
+        return result;
+    }
 
     private void informListener(boolean force) {
         if (force || System.currentTimeMillis() - lastListenerInform > informIntervalMillis ) {
