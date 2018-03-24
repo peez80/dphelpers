@@ -36,16 +36,30 @@ public class ObservableInputStream extends FilterInputStream {
 
     @Override
     public int read() throws IOException {
-        int readByte =  super.read();
+        int result =  super.read();
 
-        if(readByte != -1) {
+        if(result != -1) {
             processedBytes.incrementAndGet();
             informListener(false);
         }else{
             informListener(true);
         }
 
-        return readByte;
+        return result;
+    }
+
+    @Override
+    public int read(byte[] b, int off, int len) throws IOException {
+        int result =  super.read(b, off, len);
+
+        if(result != -1) {
+            processedBytes.incrementAndGet();
+            informListener(false);
+        }else{
+            informListener(true);
+        }
+
+        return result;
     }
 
     private void informListener(boolean force) {
